@@ -1,0 +1,36 @@
+# Include your custom_postgui HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+#команды кнопок на панели
+net zero-xyz 			<=	halui.mdi-command-00		<= 	gladevcp.zero-xyz
+net zero-x 				<=	halui.mdi-command-01		<= 	gladevcp.zero-x
+net zero-y 				<=	halui.mdi-command-02		<= 	gladevcp.zero-y
+net zero-z 				<=	halui.mdi-command-03		<= 	gladevcp.zero-z
+net home 				<=	halui.mdi-command-04		<= 	gladevcp.home
+net thcon 				<=	halui.mdi-command-05		<= 	gladevcp.hal_btn_thcon
+net thcoff 				<=	halui.mdi-command-06		<= 	gladevcp.hal_btn_thcoff
+net set_coord 			<=	halui.mdi-command-07		<= 	gladevcp.hal_btn_set_coord
+
+net plasma_mode_on 		<=	halui.mdi-command-08 		<= 	gladevcp.hal_btn_plasma_mode_on
+net plasma_mode_off 	<=	halui.mdi-command-09 		<= 	gladevcp.hal_btn_plasma_mode_off
+net oxygen_mode_on 		<=	halui.mdi-command-10 		<= 	gladevcp.hal_btn_oxygen_mode_on
+net oxygen_mode_off 	<=	halui.mdi-command-11 		<= 	gladevcp.hal_btn_oxygen_mode_off
+
+net go_to_end			<=	halui.mdi-command-12		gladevcp.go_to_end
+
+net adaptive_feed		<=	motion.adaptive-feed		gladevcp.hal_hscale_adaptive_feed
+
+net probe-out			=> 	gladevcp.led_probe-in
+net spindle-enable		=> 	gladevcp.led_spindle-on
+
+
+#net thc2-arc-ok		 	=> 	gladevcp.led_ark-ok
+net deb-arc-ok-out		 	=> 	gladevcp.led_ark-ok
+net thc-enable			=> 	gladevcp.led_thc_enable
+net plasma				=>	gladevcp.hal_led_plasma
+net oxygen				=>	gladevcp.hal_led_oxygen
+net vel-tol	   			<= 	gladevcp.vel-tol
+net cor-vel 			<=	gladevcp.cor-vel
+
+net thc2-volts-requested        thc2.volts-requested    gladevcp.hal_hscale_volts-requested     gladevcp.hal_lbl_volts-requested
+net thc2-volts                  thc2.volts              gladevcp.hal_lbl_volts

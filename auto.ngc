@@ -1,0 +1,15 @@
+(ngcgui: FEATURE 220922:13.39.40)
+(ngcgui: files: < ./macros/strip_y.ngc >)
+(ngcgui: feature line added) #<_feature:> = 0
+(ngcgui: remaining_features line added) #<_remaining_features:> = 0
+(ngcgui: call subroutine file: ./macros/strip_y.ngc)
+(ngcgui: positional parameters:)
+(         #1 =    variable1 =            1)
+(         #2 = numb_of_lanes =            5)
+(         #3 =        width =          250)
+(         #4 =    cut_width =            3)
+(         #5 =    variable2 =          0.5)
+(         #6 =       lenght =         6000)
+(         #7 =     cutspeed =         1900)
+o<strip_y> call [1][5][250][3][0.5][6000][1900]
+(ngcgui: m2 line added) m2 (g54 activated)

@@ -1,0 +1,73 @@
+# Include your custom HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+loadrt debounce cfg=1,1,2
+addf debounce.0 servo-thread
+
+
+loadrt thc2
+addf thc2 servo-thread
+
+loadrt ahc
+addf ahc servo-thread
+
+# debounce probe
+
+net probe-in					debounce.0.0.in				hm2_7i92.0.gpio.004.in
+net probe-out					debounce.0.0.out			motion.probe-input
+
+setp 							debounce.0.delay 5
+
+###
+setp hm2_7i92.0.encoder.00.counter-mode True
+net thc2-encoder-vel            hm2_7i92.0.encoder.00.velocity
+net thc2-encoder-vel            thc2.encoder-vel
+net thc2-volts-requested        thc2.volts-requested
+net thc2-arc-ok                 thc2.arc-ok-status
+net thc2-thcu                   thc2.thcu
+net thc2-thcd                   thc2.thcd
+net thc2-volts                  thc2.volts
+
+###включение плазмы
+setp hm2_7i92.0.gpio.010.is_output true
+net spindle-enable              spindle.0.on                hm2_7i92.0.gpio.010.out
+net spindle-at-speed            spindle.0.at-speed
+sets spindle-at-speed true
+###
+
+#пины режима резки
+net plasma                      ahc.plasma                  motion.digital-out-01 
+net oxygen                      ahc.oxygen                  motion.digital-out-02
+net thc2-thcu                   ahc.torch-up                
+net thc2-thcd                   ahc.torch-down
+net current-vel                 ahc.current-vel             motion.current-vel
+net requested-vel               ahc.requested-vel           motion.requested-vel
+net spindle-enable              ahc.torch-on
+net thc2-arc-ok                 ahc.arc-ok                  motion.digital-in-00
+net thc-enable                  ahc.enable                  motion.digital-out-00
+net cur-offset                  ahc.cur-offset
+net vel-status                  ahc.vel-status
+net removing-offset             ahc.removing-offset
+net vel-tol                     ahc.velocity-tol
+net cor-vel                     ahc.correction-vel
+
+unlinkp                         joint.3.motor-pos-cmd
+net z-pos-cmd                   joint.3.motor-pos-cmd       ahc.z-pos-in
+
+unlinkp                         hm2_7i92.0.stepgen.03.position-cmd
+net z-pos-out                   ahc.z-pos-out               hm2_7i92.0.stepgen.03.position-cmd
+
+unlinkp                         hm2_7i92.0.stepgen.03.position-fb
+net z-pos-fb                    ahc.z-fb-out        joint.3.motor-pos-fb
+
+net oxthcu                     ahc.oxtorch-up                hm2_7i92.0.gpio.012.in_not
+net oxthcd                     ahc.oxtorch-down              hm2_7i92.0.gpio.013.in_not
+net oxtorch-on                 ahc.oxtorch-on                hm2_7i92.0.gpio.014.in_not motion.digital-in-09
+  
+
+
+
+
+
+
+

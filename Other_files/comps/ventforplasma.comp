@@ -1,0 +1,97 @@
+component ventforplasma "Hood for plasma or oxygen cuters";
+
+description 
+"""
+vent. for plasma or oxygen cuters
+
+""";
+ 
+author "ddd";
+
+license "GPLv2 or greater";
+
+option singleton yes;
+
+// Input Pins
+
+pin in float xpos "axis X pos-feedback";
+pin in float ypos "axis Y pos-feedback";
+
+
+// Output Pins
+
+pin out bit vent1x1 "vent valve 1";
+pin out bit vent1x2 "vent valve 2";
+pin out bit vent2x1 "vent valve 3";
+pin out bit vent2x2 "vent valve 4";
+pin out bit vent3x1 "vent valve 5";
+pin out bit vent3x2 "vent valve 6";
+pin out bit vent4x1 "vent valve 7";
+pin out bit vent4x2 "vent valve 8";
+pin out bit vent5x1 "vent valve 9";
+pin out bit vent5x2 "vent valve 10";
+pin out bit vent6x1 "vent valve 11";
+pin out bit vent6x2 "vent valve 12";
+
+
+// Parameters
+//param rw float secx1 "step of 1 section by x";
+//param rw float secx2 "step of 2 section by x";
+//param rw float secy1 "step of 1 section by y";
+//param rw float secy2 "step of 2 section by y";
+//param rw float secy3 "step of 3 section by y";
+//param rw float secy4 "step of 4 section by y";
+//param rw float secy5 "step of 5 section by y";
+//param rw float secy6 "step of 6 section by y";
+
+
+// Global Variables
+
+
+function _;
+
+;;
+
+#include "rtapi_math.h"
+
+FUNCTION(_) {
+
+	if (xpos<0 && xpos>-80 && ypos>0 && ypos<110) vent1x1 = 1;
+	else vent1x1 = 0;
+	
+	if (xpos<-70 && xpos >-150 && ypos>0 && ypos<110) vent1x2 = 1;
+	else vent1x2 = 0;
+
+	if (xpos<0 && xpos >-80 && ypos>90 && ypos < 210) vent2x1 = 1;
+	else vent2x1 = 0;
+
+	if (xpos<-70 && xpos >-150 && ypos>90 && ypos<210) vent2x2 = 1;
+	else vent2x2 = 0;
+
+	if (xpos<0 && xpos >-80 && ypos>190 && ypos < 310) vent3x1 = 1;
+	else vent3x1 = 0;
+
+	if (xpos<-70 && xpos >-150 && ypos>190 && ypos<310) vent3x2 = 1;
+	else vent3x2 = 0;
+
+	if (xpos<0 && xpos >-80 && ypos>290 && ypos < 410) vent4x1 = 1;
+	else vent4x1 = 0;
+
+	if (xpos<-70 && xpos >-150 && ypos>290 && ypos<410) vent4x2 = 1;
+	else vent4x2 = 0;
+
+	if (xpos<0 && xpos >-80 && ypos>390 && ypos < 510) vent5x1 = 1;
+	else vent5x1 = 0;
+
+	if (xpos<-70 && xpos >-150 && ypos>390 && ypos<510) vent5x2 = 1;
+	else vent5x2 = 0;
+
+	if (xpos<0 && xpos >-80 && ypos>490 && ypos < 610) vent6x1 = 1;
+	else vent6x1 = 0;
+
+	if (xpos<-70 && xpos >-150 && ypos>490 && ypos<610) vent6x2 = 1;
+	else vent6x2 = 0;
+
+
+
+}
